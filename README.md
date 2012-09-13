@@ -17,6 +17,8 @@ Attributes
 * `node['ruby_enterprise']['install_path']` - Location to install REE. Default /opt/ruby-enterprise
 * `node['ruby_enterprise']['version']` - Version to install. Looks like `1.8.7-2012.02`
 * `node['ruby_enterprise']['url']` - URL to download. Default is from GoogleCode, with the version specified
+* `node['ruby_enterprise']['dont_install_useful_gems']` - Configure REE with `--dont-install-useful-gems`. true by default
+* `node['ruby_enterprise']['no_dev_docs']` - Configure REE with `--no-dev-docs`. true by default
 
 Usage
 =====
