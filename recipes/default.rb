@@ -48,10 +48,14 @@ end
 
 bash "Install Ruby Enterprise Edition" do
   cwd Chef::Config[:file_cache_path]
+  flags = ""
+  flags << "--no-dev-docs " if node['ruby_enterprise']['no_dev_docs']
+  flags << "--dont-install-useful-gems " if node['ruby_enterprise']['dont_install_useful_gems']
+
   code <<-EOH
   tar zxf ruby-enterprise-#{ree_ver}.tar.gz
   ruby-enterprise-#{ree_ver}/installer \
-    --auto=#{ree_path}
+    --auto=#{ree_path} #{flags}
   EOH
   not_if do
     ::File.exists?("#{ree_path}/bin/ree-version") &&
